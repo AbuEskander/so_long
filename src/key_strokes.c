@@ -6,12 +6,12 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 18:07:14 by proton            #+#    #+#             */
-/*   Updated: 2024/11/13 22:47:56 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/13 22:57:18 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-static int close_program(t_mptrs *param)
+int close_program(t_mptrs *param)
 {
     mlx_destroy_window(param->mlx, param->win_mlx);
 	mlx_destroy_display(param->mlx);

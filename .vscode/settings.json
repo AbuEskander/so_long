@@ -4,6 +4,7 @@
         ".env*": "dotenv",
         "so_long.h": "c",
         "mlx.h": "c",
-        "libft.h": "c"
+        "libft.h": "c",
+        "get_next_line.h": "c"
     }
 }

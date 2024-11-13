@@ -1,41 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   ft_strlen_dill.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/08 08:49:33 by bismail           #+#    #+#             */
-/*   Updated: 2024/11/13 23:16:43 by proton           ###   ########.fr       */
+/*   Created: 2024/11/13 23:56:37 by proton            #+#    #+#             */
+/*   Updated: 2024/11/13 23:59:04 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-char	*handle_free(char **total, int cas)
+size_t	ft_strlen_dill(const char *c, char dill)
 {
-	char	*ret;
+	size_t	len;
 
-	if (cas == -1)
-	{
-		if (*total && total)
-		{
-			free(*total);
-			*total = NULL;
-		}
-		return (NULL);
-	}
-	if (cas == 0)
-	{
-		ret = ft_strdup(*total);
-		if (!ret)
-			return (NULL);
-		if (*total)
-		{
-			free(*total);
-			*total = NULL;
-		}
-		return (ret);
-	}
-	return (NULL);
+	len = 0;
+	while (c[len] && c[len] != dill)
+		len++;
+	return (len);
 }

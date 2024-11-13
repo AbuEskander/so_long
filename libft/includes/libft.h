@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
+/*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 15:43:49 by bismail           #+#    #+#             */
-/*   Updated: 2024/10/26 14:44:14 by bismail          ###   ########.fr       */
+/*   Updated: 2024/11/13 23:57:36 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,5 @@ size_t				total_len(ssize_t n);
 int					ft_putunsignednbr(unsigned int num);
 int					count_words(const char *str, char dil);
 void				freesplited(char **splited, int count_words);
+size_t	ft_strlen_dill(const char *c, char dill);
 #endif
