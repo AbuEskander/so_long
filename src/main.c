@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:49:44 by proton            #+#    #+#             */
-/*   Updated: 2024/11/14 00:05:59 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/14 00:21:58 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ static int	validate(char *path, t_map *mapx)
 {
 	int	file;
 
-	if(path == NULL || *path == '\0')
-		return (1);
-	file = open(path,O_RDONLY);
-	if(file == -1)
+	check_path(path, &file);
+	if (file == -1)
 		return (1);
 	gen_map(file, mapx);
+	if (check_map(mapx)) 
+		return (1);
 	return (0);
 }
 

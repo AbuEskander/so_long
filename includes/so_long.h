@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 18:49:05 by proton            #+#    #+#             */
-/*   Updated: 2024/11/13 23:34:24 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/14 00:25:07 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,7 @@ typedef struct mlx_map
 }   t_map;
 int key_press(int keycode,t_mptrs *param);
 int close_program(t_mptrs *param);
+void check_path(char *path, int *fd);
+int check_map(t_map mapx);
 
 #endif
