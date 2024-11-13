@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   key_strokes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 16:49:44 by proton            #+#    #+#             */
-/*   Updated: 2024/11/13 18:19:36 by proton           ###   ########.fr       */
+/*   Created: 2024/11/13 18:07:14 by proton            #+#    #+#             */
+/*   Updated: 2024/11/13 18:22:47 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Disclamer Proton is my Main Laptop :D Writen at 4:50 11/13/2024 */
 #include "so_long.h"
-
-
-int main()
+static int close_program(t_mptrs *param)
 {
-	t_mptrs	ptrs;
-	
-	ptrs.mlx = mlx_init();
-	ptrs.win_mlx = mlx_new_window(ptrs.mlx,WIDTH,HEIGHT,"Just a test");
-	mlx_key_hook(ptrs.win_mlx,&key_press,&ptrs);
-	mlx_loop(ptrs.mlx);
-   	return (0);
+    mlx_destroy_window(param->mlx, param->win_mlx);
+    exit(0);
+    return(0);
+}
+
+int key_press(int keycode,t_mptrs *param)
+{
+	if (keycode == ESC)
+		close_program(param);
+	if (keycode == W)
+		ft_printf("UP\n");
+	if (keycode == S) 
+		ft_printf("DOWN\n");
+	if (keycode == A)
+		ft_printf("RIGHT\n");
+	if (keycode == D) 
+		ft_printf("LEFT\n");
+    return (0);
 }

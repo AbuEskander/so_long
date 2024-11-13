@@ -1,4 +1,4 @@
-SRCS = main.c
+SRCS = main.c key_strokes.c
 SRC_DIR = src
 OBJ_DIR = build
 CC = cc
