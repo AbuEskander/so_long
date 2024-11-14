@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   display_error.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/29 18:37:05 by bismail           #+#    #+#             */
-/*   Updated: 2024/11/14 18:00:24 by proton           ###   ########.fr       */
+/*   Created: 2024/11/14 15:38:53 by proton            #+#    #+#             */
+/*   Updated: 2024/11/14 15:57:16 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-char	*ft_strdup(char *src)
+int	display_error(char *err)
 {
-	char	*news;
-	int		i;
-
-	news = malloc(sizeof(char) * (ft_strlen(src) + 1));
-	if (!news)
-		return (NULL);
-	i = 0;
-	while (*src)
-		news[i++] = *src++;
-	news[i] = '\0';
-	return (news);
+	ft_putstr_fd("Error: ", 2);
+	ft_putendl_fd(err, 2);
+	return (1);
 }

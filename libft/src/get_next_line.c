@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 08:59:38 by bismail           #+#    #+#             */
-/*   Updated: 2024/11/14 13:44:05 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/14 18:02:41 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static char	*readjoin(char *buff, char **total, int fd)
 		temp = ft_strjoin(*total, buff);
 		if (!temp)
 			return (handle_free(total, -1));
-
+                free(*total);
 		*total = temp;
 	}
 	return (*total);
@@ -104,19 +104,9 @@ char	*get_next_line(int fd)
 		return (NULL);
 	}
 	if (buff)
-		free(buff);
+		free(buff); 
 	if (!total)
 		return (NULL);
 	return (newlinecheck(&total));
 }
 
-// int main()
-// {
-// 	int fd = open("baba.txt",O_RDONLY);
-// 	printf("%s",get_next_line(fd));
-// 	printf("%s",get_next_line(fd));
-// 	//printf("%s \n",get_next_line(fd));
-// 	//printf("%s",get_next_line(fd));
-// 	//printf("%s",get_next_line(fd));
-
-// }

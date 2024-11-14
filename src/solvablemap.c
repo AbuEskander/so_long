@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   solvablemap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/29 18:37:05 by bismail           #+#    #+#             */
-/*   Updated: 2024/11/14 18:00:24 by proton           ###   ########.fr       */
+/*   Created: 2024/11/14 16:26:09 by proton            #+#    #+#             */
+/*   Updated: 2024/11/14 16:43:21 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-char	*ft_strdup(char *src)
+void	find_position(t_map *mapx)
 {
-	char	*news;
-	int		i;
+	int	i;
+	int	y;
 
-	news = malloc(sizeof(char) * (ft_strlen(src) + 1));
-	if (!news)
-		return (NULL);
-	i = 0;
-	while (*src)
-		news[i++] = *src++;
-	news[i] = '\0';
-	return (news);
+	y = 0;
+	while (y < mapx->y_hei)
+	{
+		i = 0;
+		while (i <= mapx->x_wid)
+		{
+			if (mapx->map[y][i] == 'P')
+			{
+				mapx->px.x_axis = i;
+				mapx->px.y_axis = y;
+			}
+			i++;
+		}
+		y++;
+	}
+}
+int	check_solvable(t_map *mapx)
+{
+	find_position(mapx);
+	return (0);
 }

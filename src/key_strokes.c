@@ -14,7 +14,7 @@
 
 int	close_program(t_mptrs *param)
 {
-        freesplited(param->map->map,param->map->y_hei);
+	freesplited(param->map->map, param->map->y_hei);
 	mlx_destroy_window(param->mlx, param->win_mlx);
 	mlx_destroy_display(param->mlx);
 	free(param->mlx);
