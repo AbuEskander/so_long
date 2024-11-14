@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 00:14:34 by proton            #+#    #+#             */
-/*   Updated: 2024/11/14 16:00:00 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/14 19:04:41 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ static int	check_walls(t_map mapx)
 	ywise = mapx.y_hei;
 	while (rowwise--)
 		if (mapx.map[0][rowwise] != '1' || mapx.map[ywise - 1][rowwise] != '1')
-			return (display_error("You have a hole/s in your Top or Bottom wall"));
+			return (display_error("You have a hole/s in your walls!!"));
 	while (--ywise)
 		if (mapx.map[ywise][0] != '1' || mapx.map[ywise][mapx.x_wid - 1] != '1')
-			return (display_error("You have a hole/s in your Right or left wall"));
+			return (display_error("You have a hole/s in your walls!!"));
 	return (0);
 }
+
 static int	check_shape(t_map mapx)
 {
 	while (--mapx.y_hei)

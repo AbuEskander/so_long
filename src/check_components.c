@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 15:02:45 by proton            #+#    #+#             */
-/*   Updated: 2024/11/14 16:24:34 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/14 19:05:06 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static int	check_colli(t_map mapx)
 		return (display_error("No collectibles"));
 	return (0);
 }
+
 static int	check_start_end(t_map mapx)
 {
 	int	i;
@@ -53,12 +54,14 @@ static int	check_start_end(t_map mapx)
 		return (display_error("You don't have exactly one exit or start"));
 	return (0);
 }
+
 static int	one_of_us(char c)
 {
 	if (c == '1' || c == 'P' || c == 'E' || c == '0' || c == 'C' || c == '\0')
 		return (0);
 	return (1);
 }
+
 static int	check_no_extra(t_map mapx)
 {
 	int	i;
@@ -75,6 +78,7 @@ static int	check_no_extra(t_map mapx)
 	}
 	return (0);
 }
+
 int	check_components(t_map mapx)
 {
 	if (check_colli(mapx) || check_start_end(mapx))

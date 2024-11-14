@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:26:09 by proton            #+#    #+#             */
-/*   Updated: 2024/11/14 16:43:21 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/14 19:04:48 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	find_position(t_map *mapx)
 		y++;
 	}
 }
+
 int	check_solvable(t_map *mapx)
 {
 	find_position(mapx);

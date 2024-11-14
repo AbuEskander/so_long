@@ -92,5 +92,5 @@ size_t				total_len(ssize_t n);
 int					ft_putunsignednbr(unsigned int num);
 int					count_words(const char *str, char dil);
 void				freesplited(char **splited, int count_words);
-size_t	ft_strlen_dill(const char *c, char dill);
+size_t				ft_strlen_dill(const char *c, char dill);
 #endif

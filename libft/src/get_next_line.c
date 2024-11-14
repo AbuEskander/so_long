@@ -79,7 +79,7 @@ static char	*readjoin(char *buff, char **total, int fd)
 		temp = ft_strjoin(*total, buff);
 		if (!temp)
 			return (handle_free(total, -1));
-                free(*total);
+		free(*total);
 		*total = temp;
 	}
 	return (*total);
@@ -104,9 +104,8 @@ char	*get_next_line(int fd)
 		return (NULL);
 	}
 	if (buff)
-		free(buff); 
+		free(buff);
 	if (!total)
 		return (NULL);
 	return (newlinecheck(&total));
 }
-

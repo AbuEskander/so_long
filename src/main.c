@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:49:44 by proton            #+#    #+#             */
-/*   Updated: 2024/11/14 17:46:27 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/14 19:05:37 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	gen_map(int fd, t_map *mapx)
 {
 	char	*total;
 	char	*tot;
-        char    *tmp;
+	char	*tmp;
 
 	tot = ft_strdup("");
 	mapx->y_hei = 0;
@@ -27,9 +27,9 @@ static void	gen_map(int fd, t_map *mapx)
 		if (!total)
 			break ;
 		tmp = ft_strjoin(tot, total);
-                free(tot);
-                free(total);
-                tot = tmp;
+		free(tot);
+		free(total);
+		tot = tmp;
 		mapx->y_hei++;
 	}
 	mapx->map = ft_split(tot, '\n');
@@ -64,6 +64,7 @@ static void	init(t_map *mapx)
 	mapx->px.y_axis = 0;
 	mapx->colli = 0;
 }
+
 int	main(int argc, char **argv)
 {
 	t_mptrs	ptrs;
