@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
+/*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:54:19 by bismail           #+#    #+#             */
-/*   Updated: 2024/09/19 11:18:54 by bismail          ###   ########.fr       */
+/*   Updated: 2024/11/14 13:39:46 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,9 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (NULL);
 	ft_strlcpy(str, s1, len1 + 1);
 	ft_strlcat(str, s2, len1 + len2 + 1);
+        if(s1)
+                free(s1);
+        if(s2)
+                free(s2);
 	return (str);
 }
