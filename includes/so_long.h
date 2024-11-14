@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 18:49:05 by proton            #+#    #+#             */
-/*   Updated: 2024/11/14 19:03:20 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/14 22:07:16 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@
 # define D 100
 # define A 97
 # define CLOSE 17
+# define WALLS "Assets/Wood_06-128x128.xpm"
+# define BACKGROUND "Assets/Dirt_01-128x128.xpm"
+# define COLLECT "Assets/idle.xpm"
+# define IMGSIZE 128
+# define CHAR "Assets/kindpng.xpm"
+# define START ""
+# define END ""
 
 typedef struct player
 {
@@ -47,6 +54,11 @@ typedef struct mlx_ptrs
 	void	*mlx;
 	void	*win_mlx;
 	t_map	*map;
+	void	*walls;
+	void	*bkg;
+	void	*me;
+	void	*end;
+	void	*coll;
 }			t_mptrs;
 
 int			key_press(int keycode, t_mptrs *param);
@@ -56,5 +68,6 @@ int			check_map(t_map mapx);
 int			check_components(t_map mapx);
 int			display_error(char *err);
 int			check_solvable(t_map *mapx);
+void		map_render(t_mptrs *ptrs, t_map *mapx);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:49:44 by proton            #+#    #+#             */
-/*   Updated: 2024/11/14 19:05:37 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/14 20:59:03 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,11 @@ int	main(int argc, char **argv)
 	init(&mapx);
 	if (validate(argv[1], &mapx))
 		return (1);
-	ft_printf("Player's x and y (%d,%d)", mapx.px.x_axis, mapx.px.y_axis);
 	ptrs.mlx = mlx_init();
 	ptrs.map = &mapx;
-	ptrs.win_mlx = mlx_new_window(ptrs.mlx, 1000, 1000, "Just a test");
+	ptrs.win_mlx = mlx_new_window(ptrs.mlx, mapx.x_wid * IMGSIZE, mapx.y_hei
+			* IMGSIZE, "so_long");
+	map_render(&ptrs, &mapx);
 	mlx_hook(ptrs.win_mlx, CLOSE, 0, close_program, &ptrs);
 	mlx_key_hook(ptrs.win_mlx, key_press, &ptrs);
 	mlx_loop(ptrs.mlx);

@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 18:07:14 by proton            #+#    #+#             */
-/*   Updated: 2024/11/14 13:20:34 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/14 22:01:52 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 int	close_program(t_mptrs *param)
 {
 	freesplited(param->map->map, param->map->y_hei);
+	mlx_destroy_image(param->mlx, param->walls);
+	mlx_destroy_image(param->mlx, param->me);
+	mlx_destroy_image(param->mlx, param->bkg);
+	mlx_destroy_image(param->mlx, param->coll);
 	mlx_destroy_window(param->mlx, param->win_mlx);
 	mlx_destroy_display(param->mlx);
 	free(param->mlx);
