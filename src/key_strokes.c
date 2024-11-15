@@ -6,13 +6,13 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 18:07:14 by proton            #+#    #+#             */
-/*   Updated: 2024/11/15 22:32:26 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/15 22:45:40 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	free_me(t_mptrs *param)
+static void	free_me(t_mptrs *param)
 {
 	if (param->me_up)
 		mlx_destroy_image(param->mlx, param->me_up);
