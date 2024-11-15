@@ -6,18 +6,18 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 20:27:04 by proton            #+#    #+#             */
-/*   Updated: 2024/11/15 17:38:08 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/15 22:28:30 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	put_map(t_mptrs *ptrs, t_map *mapx)
+static void	put_map(t_mptrs *ptrs, t_map *mapx, int side)
 {
 	put_walls(ptrs, mapx);
 	put_floor(ptrs, mapx);
 	put_colli(ptrs, mapx);
-	put_me(ptrs, mapx);
+	put_me(ptrs, mapx, side);
 }
 
 int	render_me(t_mptrs *ptrs, int size)
@@ -37,7 +37,7 @@ int	render_me(t_mptrs *ptrs, int size)
 	return (0);
 }
 
-int	map_render(t_mptrs *ptrs, t_map *mapx)
+int	map_render(t_mptrs *ptrs, t_map *mapx, int side)
 {
 	int	size;
 
@@ -56,6 +56,6 @@ int	map_render(t_mptrs *ptrs, t_map *mapx)
 		return (1);
 	if (render_me(ptrs, size))
 		return (1);
-	put_map(ptrs, mapx);
+	put_map(ptrs, mapx, side);
 	return (0);
 }

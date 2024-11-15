@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 18:49:05 by proton            #+#    #+#             */
-/*   Updated: 2024/11/15 21:41:35 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/15 22:32:02 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct mlx_map
 	int		exch;
 	t_playx	px;
 	int		won;
+	int		side;
 }			t_map;
 typedef struct mlx_ptrs
 {
@@ -77,12 +78,13 @@ int			check_map(t_map *mapx);
 int			check_components(t_map *mapx);
 int			display_error(char *err);
 int			check_solvable(t_map *mapx);
-int			map_render(t_mptrs *ptrs, t_map *mapx);
+int			map_render(t_mptrs *ptrs, t_map *mapx, int side);
 void		put_walls(t_mptrs *ptrs, t_map *mapx);
 void		put_floor(t_mptrs *ptrs, t_map *mapx);
 void		put_colli(t_mptrs *ptrs, t_map *mapx);
-void		put_me(t_mptrs *ptrs, t_map *mapx);
+void		put_me(t_mptrs *ptrs, t_map *mapx, int side);
 int			render_me(t_mptrs *ptrs, int size);
 void		check_movment(t_mptrs *ptrs, int x, int y);
+int			rerender(t_mptrs *param);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:49:44 by proton            #+#    #+#             */
-/*   Updated: 2024/11/15 21:42:55 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/15 22:32:49 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ static void	init(t_map *mapx)
 	mapx->px.y_axis = 0;
 	mapx->colli = 0;
 	mapx->won = 0;
+	mapx->side = 0;
 }
 
 int	main(int argc, char **argv)
@@ -90,9 +91,10 @@ int	main(int argc, char **argv)
 	ptrs.map = &mapx;
 	ptrs.win_mlx = mlx_new_window(ptrs.mlx, mapx.x_wid * IMGSIZE, mapx.y_hei
 			* IMGSIZE, "so_long");
-	if (map_render(&ptrs, &mapx))
+	if (map_render(&ptrs, &mapx, mapx.side))
 		close_program(&ptrs);
 	mlx_hook(ptrs.win_mlx, CLOSE, 0, close_program, &ptrs);
+	mlx_expose_hook(ptrs.win_mlx, rerender, &ptrs);
 	mlx_key_hook(ptrs.win_mlx, key_press, &ptrs);
 	mlx_loop(ptrs.mlx);
 	return (0);

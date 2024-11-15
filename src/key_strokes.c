@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 18:07:14 by proton            #+#    #+#             */
-/*   Updated: 2024/11/15 21:48:34 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/15 22:32:26 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,33 @@ int	key_press(int keycode, t_mptrs *param)
 	if (keycode == ESC || param->map->won)
 		close_program(param);
 	if (keycode == W)
+	{
 		check_movment(param, param->map->px.x_axis, param->map->px.y_axis - 1);
+		param->map->side = 1;
+	}
 	if (keycode == S)
+	{
 		check_movment(param, param->map->px.x_axis, param->map->px.y_axis + 1);
+		param->map->side = 0;
+	}
 	if (keycode == A)
+	{
 		check_movment(param, param->map->px.x_axis - 1, param->map->px.y_axis);
+		param->map->side = 2;
+	}
 	if (keycode == D)
+	{
 		check_movment(param, param->map->px.x_axis + 1, param->map->px.y_axis);
+		param->map->side = 3;
+	}
 	free_me(param);
-	map_render(param, param->map);
+	map_render(param, param->map, param->map->side);
+	return (0);
+}
+
+int	rerender(t_mptrs *param)
+{
+	free_me(param);
+	map_render(param, param->map, param->map->side);
 	return (0);
 }
