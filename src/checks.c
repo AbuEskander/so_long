@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 00:14:34 by proton            #+#    #+#             */
-/*   Updated: 2024/11/15 14:16:50 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/15 14:39:57 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 
 void	check_path(char *path, int *fd)
 {
-	if (!path || !*path || !ft_strnstr(path, ".ber", ft_strlen(path)))
+	if (!path || !*path || ft_strncmp((ft_strchr(path, '.')), ".ber", 5))
 	{
 		*fd = -1;
 		display_error("Invalid path");
 	}
 	else
+	{
 		*fd = open(path, O_RDONLY);
+		if (*fd == -1)
+			display_error("Invalid path");
+	}
 }
 
 static int	check_walls(t_map mapx)

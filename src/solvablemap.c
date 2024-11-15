@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:26:09 by proton            #+#    #+#             */
-/*   Updated: 2024/11/15 14:10:31 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/15 14:24:25 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void	find_position(t_map *mapx)
 static void	flood_fill(int x, int y, t_map *mapx)
 {
 	if (mapx->tbc[y][x] == 'C')
-		mapx->colli--;
+		mapx->cch--;
 	else if (mapx->tbc[y][x] == 'E')
-		mapx->exit--;
+		mapx->exch--;
 	else if (mapx->tbc[y][x] == '1')
 		return ;
 	mapx->tbc[y][x] = '1';
@@ -51,9 +51,11 @@ static void	flood_fill(int x, int y, t_map *mapx)
 
 int	check_solvable(t_map *mapx)
 {
+	mapx->cch = mapx->colli;
+	mapx->exch = mapx->exit;
 	find_position(mapx);
 	flood_fill(mapx->px.x_axis, mapx->px.y_axis, mapx);
-	if (mapx->colli != 0 || mapx->exit != 0)
+	if (mapx->cch != 0 || mapx->exch != 0)
 	{
 		display_error("No valid path to Collect/Finish");
 		return (1);
