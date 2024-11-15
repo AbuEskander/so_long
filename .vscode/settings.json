@@ -6,6 +6,9 @@
         "mlx.h": "c",
         "libft.h": "c",
         "get_next_line.h": "c",
-        "initializer_list": "c"
+        "initializer_list": "c",
+        "compare": "c",
+        "type_traits": "c",
+        "utility": "c"
 }
 }
