@@ -1,4 +1,4 @@
-SRCS = main.c key_strokes.c checks.c check_components.c display_error.c solvablemap.c renders.c
+SRCS = main.c key_strokes.c checks.c check_components.c display_error.c solvablemap.c renders.c put.c
 SRC_DIR = src
 OBJ_DIR = build
 CC = cc

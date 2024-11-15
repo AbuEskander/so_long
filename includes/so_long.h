@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 18:49:05 by proton            #+#    #+#             */
-/*   Updated: 2024/11/15 14:10:52 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/15 17:36:57 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,15 @@
 # define D 100
 # define A 97
 # define CLOSE 17
-# define WALLS "Assets/Wood_06-128x128.xpm"
-# define BACKGROUND "Assets/Dirt_01-128x128.xpm"
-# define COLLECT "Assets/idle.xpm"
-# define IMGSIZE 128
-# define CHAR "Assets/kindpng.xpm"
-# define START ""
-# define END ""
+# define IMGSIZE 32
+# define WALLS "Assets/Walls.xpm"
+# define FLOOR "Assets/floor.xpm"
+# define COLLI "Assets/Collectables.xpm"
+# define LOOKUP "Assets/idle_up.xpm"
+# define LOOKDN "Assets/idle_down.xpm"
+# define LOOKLFT "Assets/idle_left.xpm"
+# define LOOKRT "Assets/idle_right.xpm"
+# define EXIT "Assets/exit.xpm"
 
 typedef struct player
 {
@@ -58,9 +60,12 @@ typedef struct mlx_ptrs
 	void	*win_mlx;
 	t_map	*map;
 	void	*walls;
-	void	*bkg;
-	void	*me;
-	void	*end;
+	void	*floor;
+	void	*me_up;
+	void	*me_dn;
+	void	*me_lft;
+	void	*me_rt;
+	void	*exit;
 	void	*coll;
 }			t_mptrs;
 
@@ -71,6 +76,10 @@ int			check_map(t_map *mapx);
 int			check_components(t_map *mapx);
 int			display_error(char *err);
 int			check_solvable(t_map *mapx);
-void		map_render(t_mptrs *ptrs, t_map *mapx);
+int			map_render(t_mptrs *ptrs, t_map *mapx);
+void		put_walls(t_mptrs *ptrs, t_map *mapx);
+void		put_floor(t_mptrs *ptrs, t_map *mapx);
+void		put_colli(t_mptrs *ptrs, t_map *mapx);
+void		put_me(t_mptrs *ptrs, t_map *mapx);
 
 #endif

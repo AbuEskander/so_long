@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:49:44 by proton            #+#    #+#             */
-/*   Updated: 2024/11/15 14:20:55 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/15 17:33:47 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ static void	gen_map(int fd, t_map *mapx)
 		total = get_next_line(fd);
 		if (!total)
 			break ;
+		if (ft_strlen(total) < 3)
+		{
+			free(total);
+			continue ;
+		}
 		tmp = ft_strjoin(tot, total);
 		free(tot);
 		free(total);
@@ -34,7 +39,6 @@ static void	gen_map(int fd, t_map *mapx)
 	}
 	mapx->map = ft_split(tot, '\n');
 	mapx->tbc = ft_split(tot, '\n');
-	mapx->x_wid = ft_strlen(mapx->map[0]);
 	free(tot);
 }
 
@@ -46,6 +50,7 @@ static int	validate(char *path, t_map *mapx)
 	if (file == -1)
 		return (1);
 	gen_map(file, mapx);
+	mapx->x_wid = ft_strlen(mapx->map[0]);
 	close(file);
 	if (check_map(mapx) || check_solvable(mapx))
 	{
@@ -84,7 +89,8 @@ int	main(int argc, char **argv)
 	ptrs.map = &mapx;
 	ptrs.win_mlx = mlx_new_window(ptrs.mlx, mapx.x_wid * IMGSIZE, mapx.y_hei
 			* IMGSIZE, "so_long");
-	map_render(&ptrs, &mapx);
+	if (map_render(&ptrs, &mapx))
+		close_program(&ptrs);
 	mlx_hook(ptrs.win_mlx, CLOSE, 0, close_program, &ptrs);
 	mlx_key_hook(ptrs.win_mlx, key_press, &ptrs);
 	mlx_loop(ptrs.mlx);

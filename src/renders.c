@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 20:27:04 by proton            #+#    #+#             */
-/*   Updated: 2024/11/14 22:07:07 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/15 17:38:08 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,48 @@
 
 static void	put_map(t_mptrs *ptrs, t_map *mapx)
 {
-	int	i;
-	int	j;
-
-	j = 0;
-	while (j < mapx->y_hei)
-	{
-		i = 0;
-		while (i < mapx->x_wid)
-		{
-			if (mapx->map[j][i] == '1')
-				mlx_put_image_to_window(ptrs->mlx, ptrs->win_mlx, ptrs->walls,
-					IMGSIZE * i, IMGSIZE * j);
-			if (mapx->map[j][i] == '0' || mapx->map[j][i] == 'C')
-				mlx_put_image_to_window(ptrs->mlx, ptrs->win_mlx, ptrs->bkg,
-					IMGSIZE * i, IMGSIZE * j);
-			if (mapx->map[j][i] == 'P')
-				mlx_put_image_to_window(ptrs->mlx, ptrs->win_mlx, ptrs->me,
-					IMGSIZE * i, IMGSIZE * j);
-			if (mapx->map[j][i] == 'C')
-				mlx_put_image_to_window(ptrs->mlx, ptrs->win_mlx, ptrs->coll,
-					IMGSIZE * i, IMGSIZE * j);
-			i++;
-		}
-		j++;
-	}
+	put_walls(ptrs, mapx);
+	put_floor(ptrs, mapx);
+	put_colli(ptrs, mapx);
+	put_me(ptrs, mapx);
 }
 
-void	map_render(t_mptrs *ptrs, t_map *mapx)
+int	render_me(t_mptrs *ptrs, int size)
+{
+	ptrs->me_up = mlx_xpm_file_to_image(ptrs->mlx, LOOKUP, &size, &size);
+	if (!ptrs->me_up)
+		return (1);
+	ptrs->me_dn = mlx_xpm_file_to_image(ptrs->mlx, LOOKDN, &size, &size);
+	if (!ptrs->me_dn)
+		return (1);
+	ptrs->me_lft = mlx_xpm_file_to_image(ptrs->mlx, LOOKLFT, &size, &size);
+	if (!ptrs->me_lft)
+		return (1);
+	ptrs->me_rt = mlx_xpm_file_to_image(ptrs->mlx, LOOKRT, &size, &size);
+	if (!ptrs->me_rt)
+		return (1);
+	return (0);
+}
+
+int	map_render(t_mptrs *ptrs, t_map *mapx)
 {
 	int	size;
-	int	char_size;
 
-	size = 64;
-	char_size = 128;
+	size = 32;
 	ptrs->walls = mlx_xpm_file_to_image(ptrs->mlx, WALLS, &size, &size);
-	ptrs->bkg = mlx_xpm_file_to_image(ptrs->mlx, BACKGROUND, &size, &size);
-	ptrs->coll = mlx_xpm_file_to_image(ptrs->mlx, COLLECT, &size, &size);
-	ptrs->me = mlx_xpm_file_to_image(ptrs->mlx, CHAR, &char_size, &char_size);
+	if (!ptrs->walls)
+		return (1);
+	ptrs->floor = mlx_xpm_file_to_image(ptrs->mlx, FLOOR, &size, &size);
+	if (!ptrs->floor)
+		return (1);
+	ptrs->coll = mlx_xpm_file_to_image(ptrs->mlx, COLLI, &size, &size);
+	if (!ptrs->coll)
+		return (1);
+	ptrs->exit = mlx_xpm_file_to_image(ptrs->mlx, EXIT, &size, &size);
+	if (!ptrs->exit)
+		return (1);
+	if (render_me(ptrs, size))
+		return (1);
 	put_map(ptrs, mapx);
+	return (0);
 }

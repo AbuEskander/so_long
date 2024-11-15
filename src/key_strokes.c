@@ -6,20 +6,37 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 18:07:14 by proton            #+#    #+#             */
-/*   Updated: 2024/11/15 14:21:27 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/15 17:38:04 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void	free_me(t_mptrs *param)
+{
+	if (param->me_up)
+		mlx_destroy_image(param->mlx, param->me_up);
+	if (param->me_dn)
+		mlx_destroy_image(param->mlx, param->me_dn);
+	if (param->me_lft)
+		mlx_destroy_image(param->mlx, param->me_lft);
+	if (param->me_rt)
+		mlx_destroy_image(param->mlx, param->me_rt);
+}
+
 int	close_program(t_mptrs *param)
 {
 	freesplited(param->map->map, param->map->y_hei);
 	freesplited(param->map->tbc, param->map->y_hei);
-	mlx_destroy_image(param->mlx, param->walls);
-	mlx_destroy_image(param->mlx, param->me);
-	mlx_destroy_image(param->mlx, param->bkg);
-	mlx_destroy_image(param->mlx, param->coll);
+	if (param->walls)
+		mlx_destroy_image(param->mlx, param->walls);
+	if (param->floor)
+		mlx_destroy_image(param->mlx, param->floor);
+	if (param->coll)
+		mlx_destroy_image(param->mlx, param->coll);
+	if (param->exit)
+		mlx_destroy_image(param->mlx, param->exit);
+	free_me(param);
 	mlx_destroy_window(param->mlx, param->win_mlx);
 	mlx_destroy_display(param->mlx);
 	free(param->mlx);
