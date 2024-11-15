@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:50:51 by proton            #+#    #+#             */
-/*   Updated: 2024/11/15 22:27:15 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/15 22:43:29 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	put_floor(t_mptrs *ptrs, t_map *mapx)
 		j++;
 	}
 }
+
 static void	render_side(t_mptrs *ptrs, int side, int j, int i)
 {
 	if (side == 0)
