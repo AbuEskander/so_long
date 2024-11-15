@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 18:49:05 by proton            #+#    #+#             */
-/*   Updated: 2024/11/14 22:07:16 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/15 14:10:52 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,14 @@ typedef struct player
 typedef struct mlx_map
 {
 	char	**map;
+	char	**tbc;
 	int		x_wid;
 	int		y_hei;
 	int		exit;
 	int		start;
 	int		colli;
+	int		cch;
+	int		exch;
 	t_playx	px;
 }			t_map;
 typedef struct mlx_ptrs
@@ -64,8 +67,8 @@ typedef struct mlx_ptrs
 int			key_press(int keycode, t_mptrs *param);
 int			close_program(t_mptrs *param);
 void		check_path(char *path, int *fd);
-int			check_map(t_map mapx);
-int			check_components(t_map mapx);
+int			check_map(t_map *mapx);
+int			check_components(t_map *mapx);
 int			display_error(char *err);
 int			check_solvable(t_map *mapx);
 void		map_render(t_mptrs *ptrs, t_map *mapx);

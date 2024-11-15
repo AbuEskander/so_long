@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 00:14:34 by proton            #+#    #+#             */
-/*   Updated: 2024/11/14 19:04:41 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/15 14:16:50 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,27 +31,42 @@ static int	check_walls(t_map mapx)
 	rowwise = mapx.x_wid;
 	ywise = mapx.y_hei;
 	while (rowwise--)
+	{
 		if (mapx.map[0][rowwise] != '1' || mapx.map[ywise - 1][rowwise] != '1')
-			return (display_error("You have a hole/s in your walls!!"));
+		{
+			display_error("You have a hole/s in your walls!!");
+			return (1);
+		}
+	}
 	while (--ywise)
+	{
 		if (mapx.map[ywise][0] != '1' || mapx.map[ywise][mapx.x_wid - 1] != '1')
-			return (display_error("You have a hole/s in your walls!!"));
+		{
+			display_error("You have a hole/s in your walls!!");
+			return (1);
+		}
+	}
 	return (0);
 }
 
 static int	check_shape(t_map mapx)
 {
 	while (--mapx.y_hei)
+	{
 		if (ft_strlen(mapx.map[mapx.y_hei]) != (size_t)mapx.x_wid)
-			return (display_error("Not Rectangular"));
+		{
+			display_error("Not Rectangular");
+			return (1);
+		}
+	}
 	return (0);
 }
 
-int	check_map(t_map mapx)
+int	check_map(t_map *mapx)
 {
-	if (check_shape(mapx))
+	if (check_shape(*mapx))
 		return (1);
-	if (check_walls(mapx) || check_components(mapx))
+	if (check_walls(*mapx) || check_components(mapx))
 		return (1);
 	return (0);
 }
