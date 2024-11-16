@@ -6,13 +6,13 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:26:09 by proton            #+#    #+#             */
-/*   Updated: 2024/11/16 13:10:21 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/16 13:55:21 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	find_position(t_map *mapx)
+static void	find_position(t_map *mapx)
 {
 	int	i;
 	int	y;
