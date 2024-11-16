@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:49:44 by proton            #+#    #+#             */
-/*   Updated: 2024/11/16 13:22:04 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/16 13:27:49 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	*checking_valid_input(int fd, t_map *mapx)
 		total = get_next_line(fd);
 		if (!total)
 			break ;
-		if (ft_strlen(total) < 3)
+		if (*total == '\n')
 		{
 			free(total);
 			continue ;
