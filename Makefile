@@ -5,9 +5,8 @@ CC = cc
 NAME = so_long
 MINIX = minilibx-linux
 LIBS = -L./minilibx-linux/ -L./libft -lft -lmlx_Linux -lmlx -lXext -lX11
-CFLAGS = -Wall -Werror -Wextra -I./includes -L./minilibx-linux/ $(LIBS)
+CFLAGS = -Wall -Werror -Wextra -I./includes $(LIBS)
 SRCSDIR=$(addprefix src/,$(SRCS))
-
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCSDIR))
 LIBFT = libft
 
