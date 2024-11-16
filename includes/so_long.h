@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 18:49:05 by proton            #+#    #+#             */
-/*   Updated: 2024/11/16 13:22:21 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/16 22:14:35 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define IMGSIZE 32
 # define WALLS "Assets/Walls.xpm"
 # define FLOOR "Assets/floor.xpm"
-# define COLLI "Assets/Collectables.xpm"
+# define COLLI "Assets/Transperent32x32.xpm"
 # define LOOKUP "Assets/idle_up.xpm"
 # define LOOKDN "Assets/idle_down.xpm"
 # define LOOKLFT "Assets/idle_left.xpm"
