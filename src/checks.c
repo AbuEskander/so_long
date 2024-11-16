@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 00:14:34 by proton            #+#    #+#             */
-/*   Updated: 2024/11/15 14:39:57 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/16 13:09:02 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	check_walls(t_map mapx)
 		if (mapx.map[0][rowwise] != '1' || mapx.map[ywise - 1][rowwise] != '1')
 		{
 			display_error("You have a hole/s in your walls!!");
-			return (1);
+			return (FAIL);
 		}
 	}
 	while (--ywise)
@@ -47,10 +47,10 @@ static int	check_walls(t_map mapx)
 		if (mapx.map[ywise][0] != '1' || mapx.map[ywise][mapx.x_wid - 1] != '1')
 		{
 			display_error("You have a hole/s in your walls!!");
-			return (1);
+			return (FAIL);
 		}
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 static int	check_shape(t_map mapx)
@@ -60,17 +60,17 @@ static int	check_shape(t_map mapx)
 		if (ft_strlen(mapx.map[mapx.y_hei]) != (size_t)mapx.x_wid)
 		{
 			display_error("Not Rectangular");
-			return (1);
+			return (FAIL);
 		}
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 int	check_map(t_map *mapx)
 {
 	if (check_shape(*mapx))
-		return (1);
+		return (FAIL);
 	if (check_walls(*mapx) || check_components(mapx))
-		return (1);
-	return (0);
+		return (FAIL);
+	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 15:38:53 by proton            #+#    #+#             */
-/*   Updated: 2024/11/14 19:05:36 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/16 13:09:14 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ int	display_error(char *err)
 {
 	ft_putstr_fd("Error: ", 2);
 	ft_putendl_fd(err, 2);
-	return (1);
+	return (FAIL);
 }

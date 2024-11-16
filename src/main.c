@@ -6,14 +6,14 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:49:44 by proton            #+#    #+#             */
-/*   Updated: 2024/11/15 22:32:49 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/16 13:22:04 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* Disclamer Proton is my Main Laptop :D Writen at 4:50pm 11/13/2024 */
 #include "so_long.h"
 
-static void	gen_map(int fd, t_map *mapx)
+static char	*checking_valid_input(int fd, t_map *mapx)
 {
 	char	*total;
 	char	*tot;
@@ -37,9 +37,24 @@ static void	gen_map(int fd, t_map *mapx)
 		tot = tmp;
 		mapx->y_hei++;
 	}
+	return (tot);
+}
+
+static int	gen_map(int fd, t_map *mapx)
+{
+	char	*tot;
+
+	tot = checking_valid_input(fd, mapx);
+	if (ft_strlen(tot) <= 9)
+	{
+		display_error("Can't be a map");
+		free(tot);
+		return (FAIL);
+	}
 	mapx->map = ft_split(tot, '\n');
 	mapx->tbc = ft_split(tot, '\n');
 	free(tot);
+	return (SUCCESS);
 }
 
 static int	validate(char *path, t_map *mapx)
@@ -48,17 +63,18 @@ static int	validate(char *path, t_map *mapx)
 
 	check_path(path, &file);
 	if (file == -1)
-		return (1);
-	gen_map(file, mapx);
+		return (FAIL);
+	if (gen_map(file, mapx))
+		return (FAIL);
 	mapx->x_wid = ft_strlen(mapx->map[0]);
 	close(file);
 	if (check_map(mapx) || check_solvable(mapx))
 	{
 		freesplited(mapx->map, mapx->y_hei);
 		freesplited(mapx->tbc, mapx->y_hei);
-		return (1);
+		return (FAIL);
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 static void	init(t_map *mapx)
@@ -97,5 +113,6 @@ int	main(int argc, char **argv)
 	mlx_expose_hook(ptrs.win_mlx, rerender, &ptrs);
 	mlx_key_hook(ptrs.win_mlx, key_press, &ptrs);
 	mlx_loop(ptrs.mlx);
+	perror("LOOP FAILED");
 	return (0);
 }

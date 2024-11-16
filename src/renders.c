@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 20:27:04 by proton            #+#    #+#             */
-/*   Updated: 2024/11/15 22:28:30 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/16 13:10:11 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,5 @@ int	map_render(t_mptrs *ptrs, t_map *mapx, int side)
 	if (render_me(ptrs, size))
 		return (1);
 	put_map(ptrs, mapx, side);
-	return (0);
+	return (SUCCESS);
 }

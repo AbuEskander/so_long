@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 18:07:14 by proton            #+#    #+#             */
-/*   Updated: 2024/11/15 22:45:40 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/16 13:09:59 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	close_program(t_mptrs *param)
 	mlx_destroy_window(param->mlx, param->win_mlx);
 	mlx_destroy_display(param->mlx);
 	free(param->mlx);
-	exit(0);
+	exit(SUCCESS);
 }
 
 int	key_press(int keycode, t_mptrs *param)
@@ -69,12 +69,12 @@ int	key_press(int keycode, t_mptrs *param)
 	}
 	free_me(param);
 	map_render(param, param->map, param->map->side);
-	return (0);
+	return (SUCCESS);
 }
 
 int	rerender(t_mptrs *param)
 {
 	free_me(param);
 	map_render(param, param->map, param->map->side);
-	return (0);
+	return (SUCCESS);
 }

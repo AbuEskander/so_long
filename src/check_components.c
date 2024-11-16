@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 15:02:45 by proton            #+#    #+#             */
-/*   Updated: 2024/11/15 14:17:36 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/16 13:08:10 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static int	check_colli(t_map *mapx)
 	if (mapx->colli == 0)
 	{
 		display_error("No collectibles");
-		return (1);
+		return (FAIL);
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 static int	check_start_end(t_map *mapx)
@@ -56,16 +56,16 @@ static int	check_start_end(t_map *mapx)
 	if (mapx->exit != 1 || mapx->start != 1)
 	{
 		display_error("You don't have exactly one exit or start");
-		return (1);
+		return (FAIL);
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 static int	one_of_us(char c)
 {
 	if (c == '1' || c == 'P' || c == 'E' || c == '0' || c == 'C' || c == '\0')
-		return (0);
-	return (1);
+		return (SUCCESS);
+	return (FAIL);
 }
 
 static int	check_no_extra(t_map mapx)
@@ -82,19 +82,19 @@ static int	check_no_extra(t_map mapx)
 			if (one_of_us(mapx.map[y][i++]))
 			{
 				display_error("Things are not supposed to be here :P");
-				return (1);
+				return (FAIL);
 			}
 		}
 		y++;
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 int	check_components(t_map *mapx)
 {
 	if (check_colli(mapx) || check_start_end(mapx))
-		return (1);
+		return (FAIL);
 	if (check_no_extra(*mapx))
-		return (1);
-	return (0);
+		return (FAIL);
+	return (SUCCESS);
 }

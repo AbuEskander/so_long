@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 18:49:05 by proton            #+#    #+#             */
-/*   Updated: 2024/11/15 22:32:02 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/16 13:22:21 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,16 @@
 # define LOOKLFT "Assets/idle_left.xpm"
 # define LOOKRT "Assets/idle_right.xpm"
 # define EXIT "Assets/exit.xpm"
+# define SUCCESS 0
+# define FAIL 1
 
-typedef struct player
+typedef struct s_player
 {
 	int		x_axis;
 	int		y_axis;
 }			t_playx;
 
-typedef struct mlx_map
+typedef struct s_mlx_map
 {
 	char	**map;
 	char	**tbc;
@@ -56,7 +58,7 @@ typedef struct mlx_map
 	int		won;
 	int		side;
 }			t_map;
-typedef struct mlx_ptrs
+typedef struct s_mlx_ptrs
 {
 	void	*mlx;
 	void	*win_mlx;
