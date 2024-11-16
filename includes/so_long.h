@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 18:49:05 by proton            #+#    #+#             */
-/*   Updated: 2024/11/16 22:14:35 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/16 22:24:11 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 # include "../libft/includes/libft.h"
 # include "../minilibx-linux/mlx.h"
 # include <stdio.h>
-# define WIDTH 600
-# define HEIGHT 600
-# define KEY_CLK 2
 # define ESC 65307
 # define W 119
 # define S 115
@@ -42,7 +39,6 @@ typedef struct s_player
 	int		x_axis;
 	int		y_axis;
 }			t_playx;
-
 typedef struct s_mlx_map
 {
 	char	**map;
