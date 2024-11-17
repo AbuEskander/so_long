@@ -106,7 +106,7 @@ int	main(int argc, char **argv)
 	ptrs.mlx = mlx_init();
 	ptrs.map = &mapx;
 	ptrs.win_mlx = mlx_new_window(ptrs.mlx, mapx.x_wid * IMGSIZE, mapx.y_hei
-			* IMGSIZE, "PROTON CATCHER");
+			* IMGSIZE, "SO_LONG");
 	if (map_render(&ptrs, &mapx, mapx.side))
 		close_program(&ptrs);
 	mlx_hook(ptrs.win_mlx, CLOSE, 0, close_program, &ptrs);
