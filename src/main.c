@@ -6,7 +6,7 @@
 /*   By: proton <proton@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:49:44 by proton            #+#    #+#             */
-/*   Updated: 2024/11/16 22:18:43 by proton           ###   ########.fr       */
+/*   Updated: 2024/11/18 14:07:33 by proton           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	main(int argc, char **argv)
 	ptrs.mlx = mlx_init();
 	ptrs.map = &mapx;
 	ptrs.win_mlx = mlx_new_window(ptrs.mlx, mapx.x_wid * IMGSIZE, mapx.y_hei
-			* IMGSIZE, "PROTON CATCHER");
+			* IMGSIZE, "so_long");
 	if (map_render(&ptrs, &mapx, mapx.side))
 		close_program(&ptrs);
 	mlx_hook(ptrs.win_mlx, CLOSE, 0, close_program, &ptrs);
